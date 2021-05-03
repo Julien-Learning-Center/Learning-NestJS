@@ -22,7 +22,7 @@ export class AuthService implements AuthenticationProvider {
   async validateUser(details: Omit<User, 'id'>) {
     const { discordId } = details;
 
-    const user = await this.userModel.findOne({ discordId });
+    const user = await this.findUser(discordId);
 
     if (user) return user;
 
